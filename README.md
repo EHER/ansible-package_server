@@ -7,7 +7,8 @@ A role to pack projects from git repositories into deb packages, and make then a
 - eher_package_server_build_path - path used to build projects
 - eher_package_server_name - name of the generated deb package
 - eher_package_server_git_repo - git repository that have the project to be packed
-- eher_package_build_command - command that will be executed on project root, before pack it
+- eher_package_server_build_command - command that will be executed on project root, before pack it
+- eher_package_server_destination_prefix - path to where the project will be extracted on package installation (default is /usr/local/<eher_package_server_name>)
 
 ## how it works?
 
@@ -28,12 +29,12 @@ Then you can configure some packages. A definition of a package is git repositor
   sudo: yes
   tags: package_server
   roles:
-      - role: package_server
-        eher_package_name: 'queroservoluntario'
-        eher_package_git_repo: '/home/git/queroservoluntario.git'
-        eher_package_git_branch: 'Eher'
-        eher_package_build_command: 'make install'
-        eher_package_destination_prefix: '/var/www/queroservoluntario'
+      - role: EHER.package_server
+        eher_package_server_name: 'queroservoluntario'
+        eher_package_server_git_repo: '/home/git/queroservoluntario.git'
+        eher_package_server_git_branch: 'Eher'
+        eher_package_server_build_command: 'make install'
+        eher_package_server_destination_prefix: '/var/www/queroservoluntario'
 ```
 
 Before run the role will be available a command to pack the project. In the example will be pack_queroservoluntario.sh, because the eher_package_name set.
@@ -50,5 +51,5 @@ sudo apt-get update
 sudo apt-get install queroservoluntario
 ```
 
-You can also use the package_client role and make it simpler.
+You can also use the [package_client](https://github.com/EHER/ansible-package_client) role and make it simpler.
 
