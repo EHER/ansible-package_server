@@ -28,7 +28,7 @@
   action: file path={{ eher_package_server_build_path }} mode=0777 state=directory
 
 - name: ensure package script
-  action: template src=pack.sh.j2 dest=/usr/local/bin/pack_{{ eher_package_server_host }}.sh mode=0755
+  action: template src=pack.sh.j2 dest=/usr/local/bin/pack_{{ eher_package_server_name }}.sh mode=0755
 
 - name: ensure that have at last on version of the package into debian channel
-  action: shell pack_{{ eher_package_server_host }}.sh > /var/www/packages/{{ eher_package_server_host }}.log creates=/var/www/packages/{{ eher_package_server_host }}.log 
+  action: shell pack_{{ eher_package_server_name }}.sh > /var/www/packages/{{ eher_package_server_name }}.log creates=/var/www/packages/{{ eher_package_server_name }}.log 
