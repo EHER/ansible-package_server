@@ -27,6 +27,9 @@
 - name: ensure packages build directory exists
   action: file path={{ eher_package_server_build_path }} mode=0777 state=directory
 
+- name: ensure packages index has open permissions
+  action: file path=/var/www/packages/Packages.gz mode=0777 state=file
+
 - name: ensure package script
   action: template src=pack.sh.j2 dest=/usr/local/bin/pack_{{ eher_package_server_name }}.sh mode=0755
 
