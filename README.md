@@ -9,6 +9,7 @@ A role to pack projects from git repositories into deb packages, and make then a
 - eher_package_server_git_repo - git repository that have the project to be packed
 - eher_package_server_build_command - command that will be executed on project root, before pack it
 - eher_package_server_destination_prefix - path to where the project will be extracted on package installation (default is /usr/local/<eher_package_server_name>)
+- package_server_after_install_command - command to be executed after package install
 
 ## how it works?
 

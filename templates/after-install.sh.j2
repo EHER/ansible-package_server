@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd {{ eher_package_server_destination_prefix|default('/usr/local/' + eher_package_server_name) }}
+{{ eher_package_server_after_install_command|default('') }}
+

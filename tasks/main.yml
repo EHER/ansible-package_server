@@ -30,7 +30,10 @@
 - name: ensure packages index has open permissions
   action: file path=/var/www/packages/Packages.gz mode=0777 state=file
 
-- name: ensure package script
+- name: create after-install script
+  action: template src=after-install.sh.j2 dest={{ eher_package_server_build_path }}/{{ eher_package_server_name }}_after-install.sh mode=0755
+
+- name: create script to pack the project
   action: template src=pack.sh.j2 dest=/usr/local/bin/pack_{{ eher_package_server_name }}.sh mode=0755
 
 - name: ensure that have at last on version of the package into debian channel
